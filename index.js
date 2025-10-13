@@ -72,8 +72,7 @@ console.log(copyObj3) //{ name: 'Chandu', age: 20, address: { city: 'Kathmandu' 
 console.log(obj3) //{ name: 'Chandu', age: 20, address: { city: 'Bhairahawa' } }
 
 //-------------------------------------------------------------------------------------//
-*/
-/*
+
 let obj1 = {
   name: 'chandu',
   age: 25,
@@ -147,26 +146,119 @@ let obj7 = {
      display();
   },
 }
+
 obj7.show()//{ name: 'chandu', age: 25, show: [Function: show] }
 //{ name: 'chandu', age: 25, show: [Function: show] }
-*/
-/*
-  console.log([]=="")//true
-  console.log([]==="")//false
-  console.log([]==0)//true
-  console.log(""==0)//true
-  console.log([]==[])//false
-  console.log(""=="")//true
-  */
 
-let obj = {
+let obj8 = {
   name: 'chandu',
   age: 25,
 }
 
 function show(city) {
-  console.log(this.name, city)
+  return this.name + city 
 }
 
-const func = show.bind(obj, 'BHW')
-func()
+  const func = show.bind(obj8,"bhw")
+ console.log(func())
+ 
+
+//-------------------------------------------------//
+
+console.log([] == '') //true
+console.log([] === '') //false
+console.log([] == 0) //true
+console.log('' == 0) //true
+console.log([] == []) //false
+console.log('' == '') //true
+
+class A {
+  constructor(name) {
+    this.name = name
+    this.show = this.show.bind(this)
+  }
+  show() {
+    console.log(this.name)
+  }
+}
+
+const obj9 = new A('Chandu')
+const copy9 = obj9.show
+copy9() //Chandu
+
+class B {
+  constructor(name) {
+    this.name = name
+  }
+  show = () => {
+    console.log(this.name)
+  }
+}
+
+const obj10 = new B('Chandu')
+const copy10 = obj10.show
+copy10() //Chandu
+
+class C {
+  constructor(name) {
+    this.name = name
+  }
+  show() {
+    console.log(this.name)
+  }
+}
+
+const obj11 = new C('Chandu')
+const copy11 = obj11.show() //Chandu
+copy11() //TypeError: Cannot read properties of undefined (reading 'name')
+
+
+const arr = [2, 1, 3, 4]
+arr.forEach((v,i) => {
+    
+  console.log(v,i)//2 0 1 1 3 2 4 3
+})
+
+for (let i = 0; i < arr.length; i++) {
+  if(arr[i]===2) continue
+  console.log(arr[i])//1 3 4 
+}
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+const arr1 = arr
+  .map((num) => num * 10)
+  .map((num) => num + 10)
+  .filter((num) => num > 50)
+console.log(arr1)
+
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+const arr1 = arr.reduce((acc, currval) => {
+  console.log(` acc: ${acc} currval: ${currval}`)
+  return acc + currval
+}, 0)
+
+console.log(arr1)
+
+//-------------------Callback Hall-----------------------//////
+
+function getData(id, getNextData) {
+  setTimeout(() => {
+    console.log('data', id)
+    if (getNextData) {
+      getNextData()
+    }
+  }, 2000)
+}
+
+getData(1, () => {
+  console.log('getting data2.....')
+  getData(2, () => {
+    console.log('getting data3.....')
+    getData(3, () => {
+      console.log('getting data4.....')
+      getData(4)
+    })
+  })
+})
+  */
