@@ -8,9 +8,11 @@
   <body>
     <button id="orange">Orange</button>
     <button id="green">Green</button>
+    <h4 style="color: red" id="tag">hello chandu</h4>
   </body>
   <script>
-     /*            Closure---------------------------------*/
+    /*----------------------Closure---------------------------------*/
+    /*
     document.getElementById('orange').onclick = eventHandler('orange')
 
     document.getElementById('green').onclick = eventHandler('green')
@@ -19,6 +21,19 @@
       document.body.style.backgroundColor = `${color}`
       return function () {
         document.body.style.backgroundColor = `${color}`
+      }
+    }*/
+
+    const tag = document.getElementById('tag')
+    tag.onclick = eventHandler
+
+    function eventHandler() {
+      if (tag.style.color == 'red') {
+        tag.style.color = 'blue'
+        tag.style.fontSize = '50px'
+      } else {
+        tag.style.color = 'green'
+        tag.innerHTML = '<h1>dkd</h1>'
       }
     }
   </script>
