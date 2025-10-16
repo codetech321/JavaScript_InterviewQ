@@ -261,5 +261,55 @@ getData(1, () => {
     })
   })
 })
-  */
 
+//------------------------------------------//
+
+async function getData() {
+  try {
+    const response = await axios.get('https://fakestoreapi.com/products/1')
+    console.log("Data:"response.data)
+  } catch (error) {
+     console.error("Error:",error)
+  }
+}
+   getData()
+//----------------------------------------------------------------//
+
+  new Promise((resolve, reject) => {
+  console.log('data fetching..........')
+  setTimeout(() => {
+    //let num = Math.random() < 0.3
+    //if (num < 1) {
+    //  resolve('Completed')
+    //} else {
+    //  reject('Rejected')
+    //}
+    resolve({
+      name: 'chnadu',
+      city: 'bhw',
+    })
+  }, 5000)
+})
+  .then((res) => {
+    console.log('Success:', res)
+    return new Promise((resolve, reject) => {
+      resolve('aaaaaaaaaaaaaaaaaaaaa')
+    })
+  })
+  .then((data) => {
+    console.log(data)
+    return new Promise((resolve, reject) => {
+      resolve('bbbbbbbbbbbbbbbbbbbbbb')
+    })
+  })
+  .then((data) => {
+    console.log(data)
+  })
+  .catch((err) => {
+    console.log('Error:', err)
+  })
+  .finally(() => {
+    console.log('terminated')
+  }) 
+*/
+    
