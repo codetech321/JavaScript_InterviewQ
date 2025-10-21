@@ -310,6 +310,19 @@ async function getData() {
   })
   .finally(() => {
     console.log('terminated')
-  }) 
-*/
-    
+  })
+
+//-----------------call , apply, and bind------------------------//
+
+  const obj ={
+  name:"Chandu",
+  age:25
+ }
+  function show(city){
+    console.log(this.name,city)
+  }
+//const a= show.bind(obj,"bhw")
+//a()//bind
+ //show.call(obj,"bhw")//call
+ //show.apply(obj,["bhw"])//apply
+ */   
